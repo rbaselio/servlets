@@ -5,16 +5,18 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.rbaselio.gerenciador.Usuario;
 import br.com.rbaselio.gerenciador.dao.UsuarioDAO;
 
 @WebServlet(urlPatterns = "/login")
 public class Login extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,11 +28,9 @@ public class Login extends HttpServlet {
 		if (usuario == null) {
 	        writer.println("<html><body>Usuário ou senha inválida</body></html>");
 	    } else {
-	    	Cookie cookie = new Cookie("usuario.logado", email);
-	    	cookie.setMaxAge(60);
-	    	resp.addCookie(cookie);
-	        writer.println("<html><body>Usuário logadão: " + email
-	                + "</body></html>");
+	    	HttpSession session = req.getSession();
+	    	session.setAttribute("usuario.logado", usuario);
+	    	writer.println("<html><body>Usuário logadão: " + email + "</body></html>");
 	    }
 		
 		

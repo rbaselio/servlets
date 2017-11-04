@@ -15,6 +15,8 @@ import br.com.rbaselio.gerenciador.dao.EmpresaDAO;
 @WebServlet(urlPatterns = "/novaEmpresa")
 public class NovaEmpresa extends HttpServlet{
 	
+	private static final long serialVersionUID = -9142880845029247758L;
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String nome = req.getParameter("nome");
