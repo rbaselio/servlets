@@ -10,18 +10,21 @@
     </c:if>
 	<br />
 
-	<form action="novaEmpresa" method="post">
+	<form action="executa" method="post">
+		<input type="hidden" name="tarefa" value="NovaEmpresa">
 		Nome: <input type="text" name="nome" /><br /> 
 		<input type="submit" value="Enviar" />
 	</form>
 	
-	<form action="login" method="post">
+	<form action="executa" method="post">
+		<input type="hidden" name="tarefa" value="Login">
 	    Email: <input type="text" name="email" /><br />
 	    Senha: <input type="password" name="senha" /><br />
 	    <input type="submit" value="Login" />
 	</form>
 	
-	<form action="logout" method="post">
+	<form action="executa" method="post">
+		<input type="hidden" name="tarefa" value="Logout">
 	    <input type="submit" value="Logout" />
 	</form>
 
